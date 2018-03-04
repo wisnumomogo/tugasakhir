@@ -21,18 +21,24 @@ class UserLogin extends CI_Controller {
 	
 	//function untuk proses hasil inputan form create user login
 	function createUserLogin(){
-		$post = $this->input->post(NULL,TRUE);
-		$cek = $this->UserLoginModel->isUsernameExist($post['username']);
-		echo $cek;
-		// if($cek){
-		// 	echo "<script>"
-		// 		+"alert('Username already exists');"
-		// 		+"</script>";
-		// 	// return;
-		// }else{
-		// 	create_user($post);
-		// 	redirect(site_url('initialsettings/userlogin'));
-		// }
+		$post=$this->input->post(NULL,TRUE);
+		$username = $this->input->post("username");
+		$password = $this->input->post("password");
+		$prodi = $this->input->post("prodi");
+		$cek = $this->UserLoginModel->isUsernameExist($username);
+		// echo $cek;
+		if($cek > 0){
+			// echo "masuk sini 1";
+			alert('Username already exist');
+			echo "<script>window.history.back();</script>";
+		}else{
+			// echo "masuk sini 2";
+			$this->UserLoginModel->create_user($post);
+			// redirect(site_url('initialsettings/userlogin'));
+			$this->output
+            ->set_content_type("application/json")
+            ->set_output(json_encode(array('status'=>'success', 'redirect'=>site_url('initialsettings/userlogin') )));
+		}
 			
 	}
 }

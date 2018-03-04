@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
+    <link href="<?php echo site_url('assets/plugins/sweetalert/sweetalert.css') ?>" rel="stylesheet" />
     <!-- Bootstrap Core Css -->
     <link href="<?php echo site_url('assets/plugins/bootstrap/css/bootstrap.css') ?>" rel="stylesheet">
     <link href="<?php echo site_url('assets/plugins/bootstrap-select/css/bootstrap-select.css') ?>" rel="stylesheet">

@@ -14,6 +14,8 @@
     <!-- Waves Effect Plugin Js -->
     <script src="<?php echo site_url('assets/plugins/node-waves/waves.js') ?>"></script>
 
+    <script src="<?php echo site_url('assets/plugins/sweetalert/sweetalert.min.js') ?>"></script>
+
     <!-- Jquery CountTo Plugin Js -->
     <script src="<?php echo site_url('assets/plugins/jquery-countto/jquery.countTo.js') ?>"></script>
 

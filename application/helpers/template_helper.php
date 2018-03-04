@@ -18,4 +18,9 @@
 		}
 	}
 
+	function alert($word){
+		echo '<script type="text/javascript">alert("'.$word.'");
+		</script>';
+	}
+
 ?>

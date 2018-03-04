@@ -18,6 +18,7 @@
     <link href="<?php echo site_url('assets/plugins/bootstrap/css/bootstrap.css') ?>" rel="stylesheet">
     <link href="<?php echo site_url('assets/plugins/bootstrap-select/css/bootstrap-select.css') ?>" rel="stylesheet">
 
+    <link href="<?php echo site_url('assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') ?>" rel="stylesheet">
     <!-- Waves Effect Css -->
     <link href="<?php echo site_url('assets/plugins/node-waves/waves.css') ?>" rel="stylesheet" />
 

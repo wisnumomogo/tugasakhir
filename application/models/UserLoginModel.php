@@ -19,6 +19,24 @@ class UserLoginModel extends CI_Model{
 		return $ret;
 	}
 
+	function getAllData(){
+		$query = $this->db->query("SELECT username,nama_prodi,nama_dosen assign_to
+								   FROM ta_user_login a
+								   LEFT JOIN ta_prodi b ON a.kode_prodi=b.kode_prodi
+								   LEFT JOIN ta_dosen c ON a.assign_to=c.kode_dosen
+								   WHERE a.kode_prodi <> 'UAI'");
+		$result = array();
+		$i=0;
+		foreach ($query->result() as $row){
+            $result[$i]['username'] = $row->username;
+            $result[$i]['nama_prodi'] = $row->nama_prodi;
+            $result[$i]['assign_to'] = $row->assign_to;
+            $i++;
+		}
+		
+		return $result;
+	}
+
 	//function untuk insert data ke database
 	public function create_user_admin($post){
 		$arr = array(

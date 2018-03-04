@@ -10,6 +10,11 @@ class UserLogin extends CI_Controller {
  
 	//default function untuk menampilkan form add user login
 	public function index(){
+		$data = array('userlogin'=> $this->UserLoginModel->getAllData());
+		$this->load->view('initialsettings/listuserlogin',$data);
+	}
+
+	function viewAddUserLogin(){
 		$data = array('prodi'=> $this->ProdiModel->getAllProdi());
 		$this->load->view('initialsettings/createuserlogin',$data);
 	}
@@ -42,6 +47,7 @@ class UserLogin extends CI_Controller {
 		}
 			
 	}
+
 
 	function selectAssign(){
 		$post = $this->input->post(NULL,TRUE);

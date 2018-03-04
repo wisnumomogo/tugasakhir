@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2018 at 11:55 AM
+-- Generation Time: Mar 04, 2018 at 03:25 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.0.23
 
@@ -25,13 +25,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ta_dosen`
+--
+
+CREATE TABLE `ta_dosen` (
+  `id` int(11) NOT NULL,
+  `kode_dosen` varchar(10) NOT NULL,
+  `kode_prodi` varchar(3) NOT NULL,
+  `nama_dosen` varchar(60) NOT NULL,
+  `gelar_depan_1` varchar(4) DEFAULT NULL,
+  `gelar_depan_2` varchar(4) DEFAULT NULL,
+  `gelar_belakang_1` varchar(6) DEFAULT NULL,
+  `gelar_belakang_2` varchar(6) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `no_telp` varchar(14) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ta_dosen`
+--
+
+INSERT INTO `ta_dosen` (`id`, `kode_dosen`, `kode_prodi`, `nama_dosen`, `gelar_depan_1`, `gelar_depan_2`, `gelar_belakang_1`, `gelar_belakang_2`, `email`, `no_telp`) VALUES
+(1, 'IF-01', 'IF', 'Dody Haryadi', NULL, NULL, 'ST', 'MTI', 'dody@uai.ac.id', '082111292827'),
+(2, 'IF-02', 'IF', 'Ade Jamal', 'Dr', 'Ir', NULL, NULL, 'adja@uai.ac.id', '082217263726'),
+(3, 'IF-03', 'IF', 'Riri Safitri', NULL, NULL, 'S.Si', 'MT', 'riri@uai.ac.id', '087877265262'),
+(4, 'IF-04', 'IF', 'Winangsari Pradani', 'Ir', NULL, 'MT', NULL, 'winangsari@uai.ac.id', '087889897676');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ta_mahasiswa`
 --
 
 CREATE TABLE `ta_mahasiswa` (
   `nim` varchar(10) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `prodi` varchar(2) NOT NULL,
+  `kode_prodi` varchar(3) NOT NULL,
   `alamat` text,
   `email` varchar(40) NOT NULL,
   `telp` varchar(13) NOT NULL
@@ -87,22 +116,30 @@ CREATE TABLE `ta_user_login` (
   `kode_prodi` varchar(3) NOT NULL,
   `keterangan` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `akses` int(11) NOT NULL
+  `akses` int(11) NOT NULL,
+  `assign_to` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ta_user_login`
 --
 
-INSERT INTO `ta_user_login` (`id`, `username`, `password`, `kode_prodi`, `keterangan`, `created_at`, `akses`) VALUES
-(1, 'admin', '0192023a7bbd73250516f069df18b500', 'UAI', 'Super admin', '2018-03-04 04:00:09', 1),
-(2, 'adminIF', '0192023a7bbd73250516f069df18b500', 'IF', NULL, '2018-03-04 09:32:46', 0),
-(3, 'adminTI', 'c93ccd78b2076528346216b3b2f701e6', 'TI', NULL, '2018-03-04 10:47:47', 0),
-(4, 'adminEL', '7488e331b8b64e5794da3fa4eb10ad5d', 'EL', NULL, '2018-03-04 10:50:29', 0);
+INSERT INTO `ta_user_login` (`id`, `username`, `password`, `kode_prodi`, `keterangan`, `created_at`, `akses`, `assign_to`) VALUES
+(1, 'admin', '0192023a7bbd73250516f069df18b500', 'UAI', 'Super admin', '2018-03-04 13:22:50', 1, 'IF-01'),
+(2, 'adminJP', '0192023a7bbd73250516f069df18b500', 'IF', NULL, '2018-03-04 14:20:31', 0, ''),
+(3, 'adminTI', 'c93ccd78b2076528346216b3b2f701e6', 'TI', NULL, '2018-03-04 10:47:47', 0, ''),
+(4, 'adminEL', '7488e331b8b64e5794da3fa4eb10ad5d', 'EL', NULL, '2018-03-04 10:50:29', 0, ''),
+(5, 'adminIF', 'cb11e09f55f5386be3354c33b84e1ab4', 'IF', NULL, '2018-03-04 14:24:42', 1, 'IF-03');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ta_dosen`
+--
+ALTER TABLE `ta_dosen`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `ta_mahasiswa`
@@ -127,6 +164,12 @@ ALTER TABLE `ta_user_login`
 --
 
 --
+-- AUTO_INCREMENT for table `ta_dosen`
+--
+ALTER TABLE `ta_dosen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `ta_prodi`
 --
 ALTER TABLE `ta_prodi`
@@ -136,7 +179,7 @@ ALTER TABLE `ta_prodi`
 -- AUTO_INCREMENT for table `ta_user_login`
 --
 ALTER TABLE `ta_user_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

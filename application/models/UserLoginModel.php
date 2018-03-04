@@ -19,13 +19,18 @@ class UserLoginModel extends CI_Model{
 		return $ret;
 	}
 
-	public function create_user($post){
+	//function untuk insert data ke database
+	public function create_user_admin($post){
 		$arr = array(
 			'username'=>$post['username'],
 			'password'=>md5($post['password']),
-			'kode_prodi'=>$post['prodi']
+			'kode_prodi'=>$post['prodi'],
+			'akses'=>1,
+			'assign_to'=>$post['assign']
 		);
 		$data = $this->db->insert($this->_table, $arr);
 	}
+
+	//function untuk get all data user
 }
 ?>

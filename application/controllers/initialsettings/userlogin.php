@@ -4,7 +4,7 @@ class UserLogin extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();		
-		$this->load->model(array('UserLoginModel','ProdiModel'));
+		$this->load->model(array('UserLoginModel','ProdiModel','DosenModel'));
 		$this->load->helper('template_helper');
 	}
  
@@ -23,8 +23,9 @@ class UserLogin extends CI_Controller {
 	function createUserLogin(){
 		$post=$this->input->post(NULL,TRUE);
 		$username = $this->input->post("username");
-		$password = $this->input->post("password");
-		$prodi = $this->input->post("prodi");
+		// $password = $this->input->post("password");
+		// $prodi = $this->input->post("prodi");
+		// $assign = $this->input->post("assign");
 		$cek = $this->UserLoginModel->isUsernameExist($username);
 		// echo $cek;
 		if($cek > 0){
@@ -33,13 +34,21 @@ class UserLogin extends CI_Controller {
 			echo "<script>window.history.back();</script>";
 		}else{
 			// echo "masuk sini 2";
-			$this->UserLoginModel->create_user($post);
+			$this->UserLoginModel->create_user_admin($post);
 			// redirect(site_url('initialsettings/userlogin'));
 			$this->output
             ->set_content_type("application/json")
             ->set_output(json_encode(array('status'=>'success', 'redirect'=>site_url('initialsettings/userlogin') )));
 		}
 			
+	}
+
+	function selectAssign(){
+		$post = $this->input->post(NULL,TRUE);
+		$prodi = $post['prodi'];
+
+		$arr = $this->DosenModel->getAllDosenByProdi($prodi);
+		echo json_encode($arr);
 	}
 }
 ?>

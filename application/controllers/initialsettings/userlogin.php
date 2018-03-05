@@ -20,8 +20,12 @@ class UserLogin extends CI_Controller {
 	}
 
 	//function untuk menampilkan form edit user login
-	function viewEditUserLogin(){
-		$this->load->view('initialsettings/edituserlogin');
+	function viewEditUserLogin($id){
+		$data = array(
+				'prodi'=> $this->ProdiModel->getAllProdi(),
+				'dataEdit'=> $this->UserLoginModel->getDataById($id)
+			);
+		$this->load->view('initialsettings/edituserlogin',$data);
 	}
 	
 	//function untuk proses hasil inputan form create user login

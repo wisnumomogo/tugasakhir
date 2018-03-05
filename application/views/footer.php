@@ -41,9 +41,13 @@
     <script src="<?php echo site_url('assets/plugins/flot-charts/jquery.flot.pie.js') ?>"></script>
     <script src="<?php echo site_url('assets/plugins/flot-charts/jquery.flot.categories.js') ?>"></script>
     <script src="<?php echo site_url('assets/plugins/flot-charts/jquery.flot.time.js') ?>"></script>
+    
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="<?php echo site_url('assets/plugins/jquery-sparkline/jquery.sparkline.js') ?>"></script>
+
+    <!-- TinyMCE -->
+    <script src="<?php echo site_url('assets/plugins/tinymce/tinymce.js')?>"></script>
 
     <!-- Custom Js -->
     <script src="<?php echo site_url('assets/js/admin.js') ?>"></script>

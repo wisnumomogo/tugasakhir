@@ -20,7 +20,7 @@ class UserLoginModel extends CI_Model{
 	}
 
 	function getAllData(){
-		$query = $this->db->query("SELECT username,nama_prodi,nama_dosen assign_to
+		$query = $this->db->query("SELECT a.id as ID, username,nama_prodi,nama_dosen assign_to
 								   FROM ta_user_login a
 								   LEFT JOIN ta_prodi b ON a.kode_prodi=b.kode_prodi
 								   LEFT JOIN ta_dosen c ON a.assign_to=c.kode_dosen
@@ -30,6 +30,24 @@ class UserLoginModel extends CI_Model{
 		foreach ($query->result() as $row){
             $result[$i]['username'] = $row->username;
             $result[$i]['nama_prodi'] = $row->nama_prodi;
+            $result[$i]['assign_to'] = $row->assign_to;
+            $result[$i]['id'] = $row->ID;
+            $i++;
+		}
+		
+		return $result;
+	}
+
+	//function untuk tampilkan data edit
+	public function getDataById($id){
+		$query = $this->db->query("SELECT * FROM ta_user_login WHERE id=".$id);
+		$result = array();
+		$i=0;
+		foreach ($query->result() as $row){
+            $result[$i]['id'] = $row->id;
+            $result[$i]['username'] = $row->username;
+            $result[$i]['kode_prodi'] = $row->kode_prodi;
+            $result[$i]['akses'] = $row->akses;
             $result[$i]['assign_to'] = $row->assign_to;
             $i++;
 		}

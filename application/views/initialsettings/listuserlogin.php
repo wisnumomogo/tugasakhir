@@ -36,7 +36,10 @@ get_template('navigation');
                                     <td><?php echo $userlogin[$i]['username']; ?></td>
                                     <td><?php echo $userlogin[$i]['nama_prodi']; ?></td>
                                     <td><?php echo $userlogin[$i]['assign_to']!=null ? $userlogin[$i]['assign_to'] : '<i>Not assigned yet</i>'; ?></td>
-                                    <td></td>
+                                    <td>
+										<a href="<?php echo site_url('initialsettings/userlogin/viewEditUserLogin/'.$userlogin[$i]['id']); ?>" class="btn btn-success">Edit</a> &nbsp;
+										<button type="submit" class="btn btn-danger">Delete</button>
+									</td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

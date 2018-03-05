@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="<?php echo is_active_page_print('pengajuan','active')?>">
-                        <a href="pages/typography.html">
+                        <a href="<?php echo site_url('pengajuan/pengajuanskripsi'); ?>">
                             <i class="material-icons">pan_tool</i>
                             <span>Pengajuan Awal Skripsi</span>
                         </a>
@@ -111,7 +111,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="<?php echo is_active_page_print('pengajuan','active')?>">
+                    <li class="<?php echo is_active_page_print('pengajuans','active')?>">
                         <a href="pages/typography.html">
                             <i class="material-icons">sync</i>
                             <span>Revisi Sidang Akhir</span>
